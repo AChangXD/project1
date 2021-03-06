@@ -1,0 +1,28 @@
+{
+  "reminderList": [
+    {
+      "id": 1,
+      "title": "Reminder 1",
+      "message": "Message 1",
+      "reminder": true
+    },
+    {
+      "id": 2,
+      "title": "Reminder 2",
+      "message": "Message 2",
+      "reminder": true
+    },
+    {
+      "id": 3,
+      "title": "Reminder 3",
+      "message": "Message 3",
+      "reminder": true
+    },
+    {
+      "id": 4,
+      "title": "Reminder 4",
+      "message": "Message 4",
+      "reminder": false
+    }
+  ]
+}

@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Header from "./components/Header.js";
+import Task from "./components/Task.js";
+const data = require("./data/data.json");
 
 function App() {
+  const [tasks, setTasks] = useState(data.reminderList);
+  const onDelete = (id) => {
+    // console.log(id);
+    setTasks(tasks.filter((task) => task.id !== id));
+    // debugger;
+  };
+  const onToggle = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Header title="Reminders"></Header>
+
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          id={task.id}
+          message={task.message}
+          title={task.title}
+          onDelete={() => onDelete(task.id)}
+          reminder={task.reminder}
+          onToggle={() => onToggle(task.id)}
+        ></Task>
+      ))}
     </div>
   );
 }

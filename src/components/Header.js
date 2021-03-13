@@ -1,12 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FaLightbulb, FaListUl } from "react-icons/fa";
-const Header = ({ title }) => {
+const Header = ({ title, showAddTask, setShowAddTask }) => {
   //   console.log(title);
-
-  const onClick = (e) => {
-    console.log(e);
-  };
 
   return (
     <header className="header">
@@ -14,9 +10,12 @@ const Header = ({ title }) => {
       <h3 style={{ float: "center" }}>{title}</h3>
 
       <FaLightbulb
-        text="Add"
-        onClick={onClick}
-        style={{ color: "green", cursor: "pointer", float: "right" }}
+        onClick={setShowAddTask}
+        style={
+          showAddTask
+            ? { color: "red", cursor: "pointer", float: "right" }
+            : { color: "green", cursor: "pointer", float: "right" }
+        }
       ></FaLightbulb>
     </header>
   );
